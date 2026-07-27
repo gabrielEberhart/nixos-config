@@ -8,11 +8,13 @@
 
   programs.home-manager.enable = true;
 
+  # Pay-Respects (replacement for thefuck)
   programs.pay-respects = {
     enable = true;
     enableZshIntegration = true;
   };
 
+  # Github
   programs.gh = {
     enable = true;
     gitCredentialHelper = {
