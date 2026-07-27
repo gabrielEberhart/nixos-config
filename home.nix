@@ -25,4 +25,15 @@
       editor = "nvim";
     };
   };
+
+  # Ghostty
+  programs.ghostty {
+    enable = true;
+    enableZshIntegration = true;
+
+    settings = {
+      theme = "Catppuccin Mocha";
+      background-opacity = "0.95";
+    };
+  };
 }
