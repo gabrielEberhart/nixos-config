@@ -27,7 +27,7 @@
   };
 
   # Ghostty
-  programs.ghostty {
+  programs.ghostty = {
     enable = true;
     enableZshIntegration = true;
 
@@ -35,5 +35,11 @@
       theme = "Catppuccin Mocha";
       background-opacity = "0.95";
     };
+  };
+
+  # Neovim (LazyVim config)
+  home.file.".config/nvim" = {
+    source = ./home/nvim;
+    recursive = true;
   };
 }
