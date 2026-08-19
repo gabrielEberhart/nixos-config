@@ -91,7 +91,7 @@
 
       theme = {
         mode = "system";
-        dark = "One Dark;
+        dark = "One Dark";
         light = "One Light";
       };
     }; # End of user settings
