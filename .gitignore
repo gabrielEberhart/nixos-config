@@ -1,0 +1,2 @@
+# Machine-specific NixOS file
+hardware-configuration.nix
