@@ -25,12 +25,14 @@
   # Git
   programs.git = {
     enable = true;
-    alias = {
-      amend = "commit --amend";
-      s = "status";
-    };
-    configExtra = {
-      init.defaultBranch = "main";
+    settings = {
+      alias = {
+        amend = "commit --amend";
+        s = "status";
+      };
+      config = {
+        init.defaultBranch = "main";
+      };
     };
   };
 
