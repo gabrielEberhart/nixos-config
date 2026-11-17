@@ -19,7 +19,7 @@
 
     # NodeJS
     nil
-    nixfmt-rfc-style
+    nixfmt
     nodejs
 
     # Zig

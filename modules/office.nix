@@ -4,5 +4,6 @@
   environment.systemPackages = with pkgs; [
     libreoffice
     kdePackages.okular
+    logseq # requires EOL Electron?
   ];
 }
