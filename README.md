@@ -29,7 +29,7 @@ include `hardware-config.nix` in the Git repo. Thanks, Nix! :)
 While my NixOS config is personal, I do still use it across multiple machines.
 However, these machines have specific needs.
 
-`.gitignore` references a file `machine.flake`. The purpose of this flake is to
+`.gitignore` references a file `machine.nix`. The purpose of this flake is to
 provide setup files for a specific machine that do not need to carry over to
 another machine, and are better left out of the repo to avoid interacting with
 other machines that run off the same config.
