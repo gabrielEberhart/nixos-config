@@ -11,6 +11,11 @@
     DISABLE_MASON = "1";
   };
 
+  # User-specific packages
+  home.packages = with pkgs; [
+    libnotify
+  ];
+
   ############
   # PROGRAMS #
   ############
@@ -111,14 +116,22 @@
     }; # End of user settings
   };
 
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      ll = "ls -la";
+      gs = "git status";
+      update = "sudo nixos-rebuild switch --flake $HOME/.config/nix-config#$(whoami)";
+    };
+  };
+
   # Neovim (LazyVim config)
   # Since I already have a working cross-distro LazyVim config, we may as well
   # keep the files stored as-is rather than porting it "the Nix way". Still,
   # it is good practise to store the configuration files alongside the rest of
   # my system configuration.
-  home.file.".config/nvim" = {
-    source = ./home/nvim;
-    recursive = true;
-  };
-
+  # home.file.".config/nvim" = {
+  #   source = ./home/nvim;
+  #   recursive = true;
+  # };
 }
