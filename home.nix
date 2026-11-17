@@ -22,6 +22,18 @@
     enableZshIntegration = true;
   };
 
+  # Git
+  programs.git = {
+    enable = true;
+    alias = {
+      amend = "commit --amend";
+      s = "status";
+    };
+    configExtra = {
+      init.defaultBranch = "main";
+    };
+  };
+
   # Github
   programs.gh = {
     enable = true;
@@ -106,4 +118,5 @@
     source = ./home/nvim;
     recursive = true;
   };
+
 }
