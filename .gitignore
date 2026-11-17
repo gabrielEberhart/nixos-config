@@ -1,0 +1,9 @@
+# Machine-specific flake
+# Write to this flake any specific configrations you may need that could
+# potentially break or interfere with another machine, e.g. compatibility
+# with VM materials.
+machine.nix
+
+# Editor files
+.vscode
+.idea
