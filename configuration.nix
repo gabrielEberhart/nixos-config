@@ -8,7 +8,14 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/wallpapers.nix
     ];
+
+
+  # Permitted insecure packages.
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -52,8 +59,12 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  # services.displayManager.sddm.enable = true;
+  # services.desktopManager.plasma6.enable = true;
+
+  # Enable the Cinnamon Desktop Environment
+  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.desktopManager.cinnamon.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -89,7 +100,7 @@
     description = "Gabriel Eberhart";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kdePackages.kate
+      # kdePackages.kate
       fastfetch
       bibata-cursors
       # thunderbird
@@ -103,6 +114,22 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    promptInit = "
+      autoload -Uz vcs_info
+      precmd_vcs_info() { vcs_info }
+      precmd_functions+=( precmd_vcs_info )
+      setopt prompt_subst
+
+      zstyle ':vcs_info:*' enable git
+      zstyle ':vcs_info:git:*' formats ' %F{244}on%f %F{magenta} %b%f'
+      zstyle ':vcs_info:git:*' actionformats ' %F{244}on%f %F{magenta} %b%f %F{red}(%a)%f'
+
+      add-zsh-hook precmd vcs_info
+
+      PROMPT='%F{cyan}%n%f%F{244}@%f%F{blue}%m%f %F{244}in%f %F{green}%~%f$vcs_info_msg_0_
+      %F{green}%f '
+      RPROMPT='%F{244}%D{%H:%M}%f'
+    ";
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
   };
